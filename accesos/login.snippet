@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>
+				login
+			</Title>
+			<Author>
+				Myself
+			</Author>
+			<Description>
+				Funcion login
+			</Description>
+			<Shortcut>
+				login
+			</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp">
+				<![CDATA[
+				OleDbDataAdapter da = new OleDbDataAdapter("select * from Usuarios Where Usuario='" + txt_usuario.Text + "' And Contraseña='" + txt_contraseña.Text + "'", conn);
+				DataTable dt = new DataTable();
+				da.Fill(dt);
+				
+				int validar = dt.Rows.Count;
+				
+				if (validar > 0)
+				{
+				string tipo = dt.Rows[0]["Id_Tipo"].ToString();
+				if (tipo == "1")
+				{
+				MessageBox.Show("Bienvenido Administrador");
+				Form1 form1 = new Form1();
+				form1.Show();
+				this.Hide();
+				}
+				
+				else
+				{
+				if (tipo == "2")
+				{
+				MessageBox.Show("Bienvenido Usuario");
+				Form2 usu = new Form2();
+				usu.Show();
+				this.Hide();
+				}
+				
+				else
+				{
+				if (tipo == "3")
+				{
+				MessageBox.Show("Bienvenido Secretaria");
+				Form3 secre = new Form3();
+				secre.Show();
+				this.Hide();
+				}
+				}
+				}
+				
+				}
+				
+				
+				if (txt_contraseña.Text == "" && txt_usuario.Text == "")
+				{
+				MessageBox.Show("Ingrese Su USUARIO y CONTRASEÑA");
+				}
+				else
+				{
+				if (txt_contraseña.Text == "")
+				{
+				MessageBox.Show("Ingrese su CONTRASEÑA");
+				}
+				else
+				{
+				if (txt_usuario.Text == "")
+				{
+				MessageBox.Show("Ingrese su USUARIO");
+				}
+				}
+				}
+				]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

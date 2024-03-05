@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>
+				Guardar
+			</Title>
+			<Author>
+				Myself
+			</Author>
+			<Description>
+				Funcion Guardar
+			</Description>
+			<Shortcut>
+				guardar
+			</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp">
+				<![CDATA[
+				conn.Open();
+				OleDbCommand cmd = new OleDbCommand("Insert into Alumnos(Nombre, Apellido, Grado) values (@nombre, @apellido, @grado)", conn);
+				cmd.Parameters.AddWithValue("@nombre", txt_nombre.Text);
+				cmd.Parameters.AddWithValue("@apellido", txt_apellido.Text);
+				cmd.Parameters.AddWithValue("@grado", txt_grado.Text);
+				cmd.ExecuteNonQuery();
+				conn.Close();
+				MessageBox.Show("Registro Guardado");
+				fillgrid();
+				]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

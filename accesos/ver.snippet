@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>
+				Fill
+			</Title>
+			<Author>
+				Myself
+			</Author>
+			<Description>
+				Funcion Ver
+			</Description>
+			<Shortcut>
+				fillss
+			</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp">
+				<![CDATA[
+				void fillgrid()
+				{
+				conn.Close();
+				conn.Open();
+				OleDbDataAdapter da = new OleDbDataAdapter("select * from Alumnos order by Id", conn);
+				DataTable dt = new DataTable();
+				da.Fill(dt);
+				dataGridView1.DataSource = dt;
+				conn.Close();
+				}
+				]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

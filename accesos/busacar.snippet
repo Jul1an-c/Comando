@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>
+				buscar
+			</Title>
+			<Author>
+				Myself
+			</Author>
+			<Description>
+				Funcion buscar
+			</Description>
+			<Shortcut>
+				busc
+			</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp">
+				<![CDATA[
+				try
+				{
+				conn.Open();
+				
+				OleDbCommand cmd = new OleDbCommand("SELECT * FROM Maestros WHERE Id = @id", conn);
+				cmd.Parameters.AddWithValue("@id", txt_id.Text);
+				
+				OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+				DataTable dt = new DataTable();
+				da.Fill(dt);
+				
+				conn.Close();
+				
+				if (dt.Rows.Count > 0)
+				{
+				dataGridView1.DataSource = dt;
+				MessageBox.Show("Búsqueda exitosa. Se encontraron " + dt.Rows.Count + " resultados.");
+				}
+				else
+				{
+				dataGridView1.DataSource = null;
+				MessageBox.Show("No se encontraron resultados para el ID proporcionado.");
+				}
+				}
+				catch (Exception ex)
+				{
+				MessageBox.Show("Error al buscar en la base de datos: " + ex.Message);
+				conn.Close();
+				}
+				]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

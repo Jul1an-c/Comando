@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>
+				Actualizar
+			</Title>
+			<Author>
+				Myself
+			</Author>
+			<Description>
+				Funcion Actualizar
+			</Description>
+			<Shortcut>
+				actuali
+			</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp">
+				<![CDATA[
+				conn.Open();
+				OleDbCommand cmd = new OleDbCommand("UPDATE Alumnos SET Nombre = @nombre, Apellido = @apellido, Grado = @grado WHERE Id = @id", conn);
+				cmd.Parameters.AddWithValue("@nombre", txt_nombre.Text);
+				cmd.Parameters.AddWithValue("@apellido", txt_apellido.Text);
+				cmd.Parameters.AddWithValue("@grado", txt_grado.Text);
+				cmd.Parameters.AddWithValue("@id", txt_id.Text);
+				cmd.ExecuteNonQuery();
+				conn.Close();
+				MessageBox.Show("Registro Actualizado");
+				fillgrid();
+				]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
